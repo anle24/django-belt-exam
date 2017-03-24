@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login & Registration | Home</title>
+  </head>
+  <body>
+    <h2>Registration</h2>
+    {% if messages %}
+      {% for message in messages %}
+        <p><font color="red">{{ message }}</font></p>
+      {% endfor %}
+    {% endif %}
+    <form action="/process" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="register">
+      <p>
+        <label for="">Name: </label>
+        <input type="text" name="name">
+      </p>
+      <p>
+        <label for="">Alias: </label>
+        <input type="text" name="alias">
+      </p>
+      <p>
+        <label for="">Email: </label>
+        <input type="text" name="email">
+      </p>
+      <p>
+        <label for="">Password: </label>
+        <input type="password" name="password">
+      </p>
+      <p>
+        <label for="">Confirm Password: </label>
+        <input type="password" name="confirmpw">
+        *Password should be at least 8 characters
+      </p>
+      <p>
+        <label for="">Birthday: </label>
+        <input type="date" name="birthday">
+      </p>
+      <p><input type="submit" value="Register"></p>
+    </form>
+    <h2>Login</h2>
+    <form action="process" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="login">
+      <p>
+        <label for="">Email: </label>
+        <input type="text" name="email">
+      </p>
+      <p>
+        <label for="">Password: </label>
+        <input type="password" name="password">
+      </p>
+      <p><input type="submit" value="Login"></p>
+    </form>
+  </body>
+</html>
